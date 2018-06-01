@@ -1,0 +1,54 @@
+<aura:component implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" controller="apiCallOutCtrl" access="global" >
+   <aura:attribute name="response" type="Map"/>
+   <aura:attribute name="ListOfVacancies" type="String[]"/>
+   <aura:attribute name="squery" type="String"/>
+   <aura:attribute name="location" type="String"/>
+   <aura:attribute name="distance" type="String"/>
+   <aura:attribute name="limit" type="Integer" default="3"/>
+   <aura:attribute name="show" type="boolean" default="false"/>
+
+   <div class="slds-m-around--medium">
+      <!--Header part-->
+      <div class="slds-page-header" role="banner">
+         <div class="slds-media__body">
+            <p class="slds-page-header__title slds-truncate" title="Vacaturebank">Nationale Vacature bank zoekopdracht</p>
+            <br />
+         </div>
+        <div class="row">
+            <!--<h2 class="header">Basic Input Text</h2>-->
+            <lightning:input name="input01" label="Zoek naar:" value="{!v.squery}" placeholder="Functie, trefwoord of bedrijf" />
+            <lightning:input name="input02" label="" value="{!v.location}" placeholder="Plaats of postcode" />
+            <lightning:input name="input03" label="" value="{!v.distance}" placeholder="Binnen straal van ... (km)" />
+            <br />  
+        </div>
+          <div class="row">         
+              <button class="slds-button slds-button--brand" onclick="{!c.calloutCtrl}">Zoek vacatures</button>  
+          </div>
+    	<aura:if isTrue="{!v.show}">
+         <!--Header part close-->
+             <h3 class="slds-text-align_right">Aantal resultaten {!v.response.Total} Weergave Top {!v.limit}</h3>
+             <div class="row">
+                <h2 class="slds-text-heading--small">Titel: {!v.response.Job0Title}</h2>
+                <h2 class="slds-text-heading--small">Bedrijf: {!v.response.Job0Company}</h2>
+                <p><aura:unescapedHtml value="{!v.response.Job0Details}"/></p>
+                <p><lightning:formattedUrl value="{!v.response.Job0Url}"/></p>   
+             <br />  
+           </div>
+              <div class="row">
+                <h2 class="slds-text-heading--small">Titel: {!v.response.Job1Title}</h2>
+                <h2 class="slds-text-heading--small">Bedrijf: {!v.response.Job1Company}</h2>
+                <p><aura:unescapedHtml value="{!v.response.Job1Details}"/></p>
+                <p><lightning:formattedUrl value="{!v.response.Job1Url}"/></p>   
+             <br />  
+           </div>
+              <div class="row">
+                <h2 class="slds-text-heading--small">Titel: {!v.response.Job2Title}</h2>
+                <h2 class="slds-text-heading--small">Bedrijf: {!v.response.Job2Company}</h2>
+                <p><aura:unescapedHtml value="{!v.response.Job2Details}"/></p>
+                <p><lightning:formattedUrl value="{!v.response.Job2Url}"/></p>   
+             <br />  
+           </div>
+         </aura:if>
+   	</div>
+   </div>
+</aura:component>
