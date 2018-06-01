@@ -1,14 +1,8 @@
-# SFDX  App
+# SFDX  vacsearch Lightning Components
+Demo component for querying an external API for vancancies.
 
-## Dev, Build and Test
-
-
-## Resources
-
+## Prerequisites
+Code available as a SFDX project, so requires SFDX CLI and Developer Hub.
 
 ## Description of Files and Directories
-
-
-## Issues
-
-
+SFDX project structure
